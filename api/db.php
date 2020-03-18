@@ -8,10 +8,10 @@ class DB{
     private $charset;
 
     public function __construct(){
-        $this->host     = "localhost";
-        $this->db       = "abarrotes_rio_verde";
-        $this->user     = "root";
-        $this->password = "";
+        $this->host     = "databases.000webhost.com";
+        $this->db       = "id12963520_abarrotes_rio_verde";
+        $this->user     = "id12963520_hectormtz";
+        $this->password = "abarrotes8161";
         //$this->password = "6#vWHD_$";
         $this->charset  = "utf8";
     }
