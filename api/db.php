@@ -32,14 +32,23 @@ class DB{
     
         try{
 
-            
-            $connection = "mysql:host=".$this->host.";dbname=" . $this->db . ";charset=" . $this->charset;
-            $options = [
+            $db = parse_url(getenv("DATABASE_URL"));
+            $pdo = new PDO("pgsql:" . sprintf(
+                "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+                $db["host"],
+                $db["port"],
+                $db["user"],
+                $db["pass"],
+                ltrim($db["path"], "/")
+            ));
+
+            //$connection = "mysql:host=".$this->host.";dbname=" . $this->db . ";charset=" . $this->charset;
+            /* $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES   => false,
-            ];
+            ]; */
             //$pdo = new PDO($connection, $this->user, $this->password, $options);
-            $pdo = new PDO($connection,$this->user,$this->password);
+            //$pdo = new PDO($connection,$this->user,$this->password);
             return $pdo;
 
 
