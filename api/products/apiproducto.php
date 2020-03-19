@@ -24,11 +24,11 @@ class ApiProducto{
     
                 $item=array
                 (
-                    "_id" => $row['Codigo'],
-                    "name" => $row['Nombre'],
-                    "brand" => $row['Marca'],
-                    "price" => $row['Precio'],
-                    "total" => $row['Stock']
+                    "_id" => $row['codigo'],
+                    "name" => $row['nombre'],
+                    "brand" => $row['marca'],
+                    "price" => $row['precio'],
+                    "total" => $row['stock']
                 );
                 array_push($total["items"], $item);
             }
