@@ -38,4 +38,7 @@ class ApiProducto{
     }
 }
 
+    $api = new ApiProducto();
+
+    $api->getAll();
 ?>
