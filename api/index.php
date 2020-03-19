@@ -3,7 +3,7 @@
     header("Access-Control-Allow-Headers: *");
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 
-    include_once 'apiproducto.php';
+    include_once './products/apiproducto.php';
 
     $api = new ApiProducto();
 

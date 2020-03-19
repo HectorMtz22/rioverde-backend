@@ -1,6 +1,7 @@
 <?php
 
 class DB{
+    /*
     private $host;
     private $db;
     private $user;
@@ -23,7 +24,7 @@ class DB{
         //$this->password = "6#vWHD_$";
         //$this->charset  = "utf8";
     }
-
+    */
     
 
     //mysql -e "USE todolistdb; select*from todolist" --user=azure --password=6#vWHD_$ --port=49175 --bind-address=52.176.6.0
