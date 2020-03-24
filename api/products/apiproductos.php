@@ -170,8 +170,9 @@ class ApiProducto{
     */
     $api = new ApiProducto();
     //(A) @hector
-
-    $data = json_decode(file_get_contents('php://input'), true);
+    $api->getAll();
+    /*
+$data = json_decode(file_get_contents('php://input'), true);
     
     if (isset($data['_id'])){
         $id = $data['_id'];
@@ -187,5 +188,7 @@ class ApiProducto{
     }else{
         $api->getAll();
     }
+
+    */
 }
 ?>
