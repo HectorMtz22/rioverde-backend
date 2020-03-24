@@ -32,10 +32,10 @@ class ApiProducto{
                     "price" => $row['precio'],
                     "total" => $row['stock']
                 );
-                //array_push($total["items"], $item);
+                array_push($total["items"], $item);
             //}
 
-            echo json_encode($item);
+            echo json_encode($total);
         }}
         else
         {
