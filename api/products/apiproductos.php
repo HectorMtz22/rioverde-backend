@@ -5,24 +5,6 @@
     
 include_once 'producto.php';
 
-//(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
-function printJSON($array)
-{
-    echo '<code>' . json_encode($array) . '</code>';
-}
-
-//(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
-function error($mensaje)
-{
-    echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
-}
-
-
-function exito($mensaje)
-{
-    echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
-}
-
 class ApiProducto{
 
     //private $imagen
@@ -112,7 +94,23 @@ class ApiProducto{
         $this->exito('¡Nuevo producto registrado!');
     }
 
+    //(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
+    function printJSON($array)
+    {
+        echo '<code>' . json_encode($array) . '</code>';
+    }
 
+    //(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
+    function error($mensaje)
+    {
+        echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
+    }
+
+
+    function exito($mensaje)
+    {
+        echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
+    }
 
     
 
@@ -170,10 +168,10 @@ class ApiProducto{
 
 
     */
-    $api = new ApiProducto();
+    
+}
+$api = new ApiProducto();
     //(A) @hector
-    $api->getAll();
-    /*
 $data = json_decode(file_get_contents('php://input'), true);
     
     if (isset($data['_id'])){
@@ -190,7 +188,4 @@ $data = json_decode(file_get_contents('php://input'), true);
     }else{
         $api->getAll();
     }
-
-    */
-}
 ?>
