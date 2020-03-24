@@ -17,7 +17,7 @@ class ApiProducto{
 
         $resultado = $producto->obtenerProductos();
 
-        if($resultado->rowCount()) //la variable "$row" es = a fila, rowcount es contar las filas
+        if($resultado->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
         {
             
             //(A) @hector
@@ -35,7 +35,7 @@ class ApiProducto{
                 array_push($total["items"], $item);
             }
             echo json_encode($total);
-        }}
+        }
         else
         {
             echo json_encode(array('mensaje' => 'No hay elementos'));
