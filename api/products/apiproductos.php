@@ -5,6 +5,24 @@
     
 include_once 'producto.php';
 
+//(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
+function printJSON($array)
+{
+    echo '<code>' . json_encode($array) . '</code>';
+}
+
+//(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
+function error($mensaje)
+{
+    echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
+}
+
+
+function exito($mensaje)
+{
+    echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
+}
+
 class ApiProducto{
 
     //private $imagen
@@ -96,23 +114,7 @@ class ApiProducto{
 
 
 
-    //(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
-    function printJSON($array)
-    {
-        echo '<code>' . json_encode($array) . '</code>';
-    }
-
-    //(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
-    function error($mensaje)
-    {
-        echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
-    }
-
-
-    function exito($mensaje)
-    {
-        echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
-    }
+    
 
 
     /* Las funciones de aqui adentro son para subir las imagenes en un futuro @hector
