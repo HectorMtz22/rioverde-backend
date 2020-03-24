@@ -35,15 +35,11 @@ class ApiProducto{
                 //array_push($total["items"], $item);
             //}
 
-            //echo json_encode($total);
-
-            //(A) @hector
-            $this->printJSON($item);
+            echo json_encode($item);
         }}
         else
         {
-            //echo json_encode(array('mensaje' => 'No hay elementos'));
-            $this->error('No hay elementos registrados');
+            echo json_encode(array('mensaje' => 'No hay elementos'));
         }
     }
 
@@ -71,15 +67,11 @@ class ApiProducto{
                 );
                 //array_push($total["items"], $item);
             }
-            //echo json_encode($total);
-
-            //(A) @hector
-            $this->printJSON($item);
+            echo json_encode($item);
         }
         else
         {
-            //echo json_encode(array('mensaje' => 'No hay elementos'));
-            $this->error('No hay elementos registrados');
+            echo json_encode(array('mensaje' => 'No hay elementos'));
         }
     }
     //(A) hasta aqui termina esta funcion que pueds borrar
@@ -91,30 +83,10 @@ class ApiProducto{
         $producto = new producto();
 
         $resultado = $producto->nuevoProducto($item);
-        $this->exito('¡Nuevo producto registrado!');
-    }
-
-    //(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
-    function printJSON($array)
-    {
-        echo '<code>' . json_encode($array) . '</code>';
-    }
-
-    //(A) esto es para filtrar los datos, si te causa error lo puedes borrar @hector
-    function error($mensaje)
-    {
-        echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
-    }
-
-
-    function exito($mensaje)
-    {
-        echo '<code>' . json_encode(array('mensaje' => $mensaje)) . '</code>';
+        $this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
     }
 
     
-
-
     /* Las funciones de aqui adentro son para subir las imagenes en un futuro @hector
     
         function subirImagen($file){
