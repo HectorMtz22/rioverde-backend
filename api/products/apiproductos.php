@@ -34,8 +34,8 @@ class ApiProducto{
                 );
                 array_push($total["items"], $item);
             //}
-
-            echo json_encode($total);
+                echo $item;
+            //echo json_encode($total);
         }}
         else
         {
