@@ -64,7 +64,7 @@ class ApiProducto{
                     "price" => $row['precio'],
                     "total" => $row['stock']
                 );
-                //array_push($total["items"], $item);
+                //array_push($total["items"], $item); NO UTILIZAR
             }
             echo json_encode($item);
         }
@@ -73,16 +73,28 @@ class ApiProducto{
             echo json_encode(array('mensaje' => 'No hay elementos'));
         }
     }
-    //(A) hasta aqui termina esta funcion que pueds borrar
-
-
-
+    
+    // Aqui tienes todas las funciones
     function add($item)
     {
         $producto = new producto();
 
         $resultado = $producto->nuevoProducto($item);
         $this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
+    }
+    function update($item)
+    {
+        $producto = new producto();
+
+        $resultado = $producto->actualizarProducto($item);
+        $this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
+    }
+    function delete($id)
+    {
+        $producto = new producto();
+
+        $resultado = $producto->eliminarProducto($id);
+        $this->json_encode(array('mensaje' => '¡Producto Eliminado!'));
     }
 
     
@@ -141,22 +153,49 @@ class ApiProducto{
     */
     
 }
+
+// Aqui mandamos a llamar toda la API 
+// Esto es lo más importante
 $api = new ApiProducto();
-    //(A) @hector
+
 $data = json_decode(file_get_contents('php://input'), true);
-    
-    if (isset($data['_id'])){
-        $id = $data['_id'];
-        if(isset($data['name'])) {
-            $api->add($data);
-        } else {
-            if(is_numeric($id)){
-                $api->getById($id);
-            }else{
-                $api->error('Los parametros son incorrectos');
-            }
+
+
+if (isset($data['_id'])){
+    $id = $data['_id'];
+    if($data['method'] == "GET") {
+        if(is_numeric($id)){
+            $api->getById($id);
+        }else{
+            $api->json_encode(array('mensaje' => '¡Los parámetros son incorrectos!'));
         }
-    }else{
-        $api->getAll();
     }
+    if($data['method'] == "POST") {
+        $api->add($data);
+    } 
+    if($data['method'] == "PUT") {
+        $api->update($data);
+    }
+    if($data['method'] == "DELETE") {
+        $api->delete($id);
+    }
+}else{
+    $api->getAll();
+}
+/* Codigo que ya funciona pero quiero mejorarlo
+if (isset($data['_id'])){
+    $id = $data['_id'];
+    if(isset($data['name'])) {
+        $api->add($data);
+    } else {
+        if(is_numeric($id)){
+            $api->getById($id);
+        }else{
+            $api->error('Los parametros son incorrectos');
+        }
+    }
+}else{
+    $api->getAll();
+}
+*/
 ?>
