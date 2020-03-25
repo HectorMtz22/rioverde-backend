@@ -19,8 +19,6 @@ class ApiProducto{
 
         if($resultado->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
         {
-            
-            //(A) @hector
             //$row = $resultado->fetch();
 
             while ($row = $resultado->fetch(PDO::FETCH_ASSOC)){
@@ -43,7 +41,6 @@ class ApiProducto{
         return 0;
     }
 
-    //(A) @hector si te causa error lo puedes borrar :D
     function getById($id)
     {
         $total["items"] = array();
@@ -103,7 +100,8 @@ class ApiProducto{
     }
 
     
-    /* Las funciones de aqui adentro son para subir las imagenes en un futuro @hector
+    /* Las funciones de aqui adentro son para subir las imagenes en un futuro   
+        POR MIENTRAS NO SE USARÁ
     
         function subirImagen($file){
         $directorio = "imagenes/";
@@ -187,20 +185,4 @@ if (isset($data['_id'])){
 }else{
     $api->getAll();
 }
-/* Codigo que ya funciona pero quiero mejorarlo
-if (isset($data['_id'])){
-    $id = $data['_id'];
-    if(isset($data['name'])) {
-        $api->add($data);
-    } else {
-        if(is_numeric($id)){
-            $api->getById($id);
-        }else{
-            $api->error('Los parametros son incorrectos');
-        }
-    }
-}else{
-    $api->getAll();
-}
-*/
 ?>
