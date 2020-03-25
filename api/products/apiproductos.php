@@ -82,7 +82,7 @@ class ApiProducto{
         $producto = new producto();
 
         $resultado = $producto->nuevoProducto($item);
-        $this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
+        //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
     }
     function update($item)
@@ -90,7 +90,7 @@ class ApiProducto{
         $producto = new producto();
 
         $resultado = $producto->actualizarProducto($item);
-        $this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
+        //$this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
         return 0;
     }
     function delete($id)
@@ -98,7 +98,7 @@ class ApiProducto{
         $producto = new producto();
 
         $resultado = $producto->eliminarProducto($id);
-        $this->json_encode(array('mensaje' => '¡Producto Eliminado!'));
+        //$this->json_encode(array('mensaje' => '¡Producto Eliminado!'));
         return 0;
     }
 
