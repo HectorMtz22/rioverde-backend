@@ -40,6 +40,7 @@ class ApiProducto{
         {
             echo json_encode(array('mensaje' => 'No hay elementos'));
         }
+        return 0;
     }
 
     //(A) @hector si te causa error lo puedes borrar :D
@@ -72,6 +73,7 @@ class ApiProducto{
         {
             echo json_encode(array('mensaje' => 'No hay elementos'));
         }
+        return 0;
     }
     
     // Aqui tienes todas las funciones
@@ -81,6 +83,7 @@ class ApiProducto{
 
         $resultado = $producto->nuevoProducto($item);
         $this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
+        return 0;
     }
     function update($item)
     {
@@ -88,6 +91,7 @@ class ApiProducto{
 
         $resultado = $producto->actualizarProducto($item);
         $this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
+        return 0;
     }
     function delete($id)
     {
@@ -95,6 +99,7 @@ class ApiProducto{
 
         $resultado = $producto->eliminarProducto($id);
         $this->json_encode(array('mensaje' => '¡Producto Eliminado!'));
+        return 0;
     }
 
     
