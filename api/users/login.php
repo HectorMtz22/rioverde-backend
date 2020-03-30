@@ -19,6 +19,7 @@ class ApiUser {
             {
                 $item=array
                 (
+                    "auth" => true,
                     "usernumber" => $row['codigo_usuario'],
                     "email" => $row['email'],
                     "name" => $row['nombre'],
@@ -30,12 +31,12 @@ class ApiUser {
         }
         else
         {
-            echo json_encode(array('mensaje' => 'No hay elementos'));
+            echo json_encode(array('auth' => false));
         }
         return 0;
     }
     function nohay() {
-        echo json_encode(array('mensaje' => 'No hay elementos'));
+        echo json_encode(array('auth' => false));
     return 0;
     }
 }
