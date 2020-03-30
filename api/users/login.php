@@ -18,7 +18,7 @@ class ApiUser {
             {
                 $item=array
                 (
-                    "auth" => true,
+                    "auth" => "true",
                     "usernumber" => $row['codigo_usuario'],
                     "email" => $row['email'],
                     "name" => $row['nombre'],
@@ -32,12 +32,20 @@ class ApiUser {
         {
             $item=array
             (
-                "auth" => false,
+                "auth" => "false",
                 "mensaje" => "No hay elementos"
             );
             echo json_encode($item);
         }
         return 0;
+    }
+    function nohay() {
+        $item=array
+        (
+        "auth" => "false"
+        );
+        echo json_encode($item);
+    return 0;
     }
 }
 $api = new ApiUser();
@@ -46,11 +54,6 @@ $data = json_decode(file_get_contents('php://input'), true);
 if (isset($data['usernumber'] && isset($data['pass']))){
     $api->verify($data);
 }else{
-    $item=array
-    (
-        "auth" => false
-    );
-    echo json_encode($item);
-    return 0;
+    $api->nohay();
 }
 ?>
