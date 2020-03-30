@@ -9,9 +9,9 @@ class ApiUser {
     function verificar($user)
     {
         $total["items"] = array();
-        $usuario = new Usuario();
+        $usur = new Usuario();
 
-        $resultado = $usuario->verificarUsuario($user);
+        $resultado = $usur->verificarUsuario($user);
         
         if($resultado->rowCount()) //la variable "$row" es = a fila, rowcount es contar las filas
         {
@@ -20,9 +20,9 @@ class ApiUser {
                 $item=array
                 (
                     "usernumber" => $row['codigo_usuario'],
-                    "email" => $row['email'],
-                    "name" => $row['nombre'],
-                    "tel" => $row['telefono']
+                    "email" => $row['Email'],
+                    "name" => $row['Nombre'],
+                    "tel" => $row['Telefono']
                 );
                 //array_push($total["items"], $item); NO UTILIZAR
             }
@@ -40,9 +40,10 @@ class ApiUser {
     }
 }
 $api = new ApiUser();
+
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['usernumber'] AND isset($data['pass']))){
+if (isset($data['usernumber']) AND isset($data['pass'])){
     $api->verificar($data);
 }else{
     $api->nohay();
