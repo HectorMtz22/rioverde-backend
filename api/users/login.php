@@ -51,5 +51,6 @@ if (isset($data['usernumber'] && isset($data['pass']))){
         "auth" => false
     );
     echo json_encode($item);
+    return 0;
 }
 ?>
