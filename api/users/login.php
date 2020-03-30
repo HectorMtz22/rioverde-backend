@@ -6,8 +6,9 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 include_once 'user.php';
 
 class ApiUser {
-    function verify($user)
+    function verificar($user)
     {
+        $total["items"] = array();
         $usuario = new Usuario();
 
         $resultado = $usuario->verificarUsuario($user);
@@ -18,7 +19,6 @@ class ApiUser {
             {
                 $item=array
                 (
-                    "auth" => "true",
                     "usernumber" => $row['codigo_usuario'],
                     "email" => $row['email'],
                     "name" => $row['nombre'],
@@ -30,29 +30,20 @@ class ApiUser {
         }
         else
         {
-            $item=array
-            (
-                "auth" => "false",
-                "mensaje" => "No hay elementos"
-            );
-            echo json_encode($item);
+            echo json_encode(array('mensaje' => 'No hay elementos'));
         }
         return 0;
     }
     function nohay() {
-        $item=array
-        (
-        "auth" => "false"
-        );
-        echo json_encode($item);
+        echo json_encode(array('mensaje' => 'No hay elementos'));
     return 0;
     }
 }
 $api = new ApiUser();
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['usernumber'] && isset($data['pass']))){
-    $api->verify($data);
+if (isset($data['usernumber'] AND isset($data['pass']))){
+    $api->verificar($data);
 }else{
     $api->nohay();
 }
