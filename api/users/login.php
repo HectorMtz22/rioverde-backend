@@ -20,9 +20,9 @@ class ApiUser {
                 $item=array
                 (
                     "usernumber" => $row['codigo_usuario'],
-                    "email" => $row['Email'],
-                    "name" => $row['Nombre'],
-                    "tel" => $row['Telefono']
+                    "email" => $row['email'],
+                    "name" => $row['nombre'],
+                    "tel" => $row['telefono']
                 );
                 //array_push($total["items"], $item); NO UTILIZAR
             }
