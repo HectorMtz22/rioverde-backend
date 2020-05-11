@@ -5,7 +5,7 @@ include_once '../db.php';
 class Proveedor extends DB{
     
     function obtenerProveedores(){
-        $query = $this->connect()->query("SELECT * FROM proveedores");
+        $query = $this->connect()->query("SELECT * FROM proveedores ORDER BY nombre ASC");
         return $query;
     }
     function obtenerProveedor($id)
