@@ -172,7 +172,11 @@ class ApiProducto{
 $api = new ApiProducto();
 
 $data = json_decode(file_get_contents('php://input'), true);
-echo $data;
+foreach ($data as $clave => $valor) {
+    // $array[3] se actualizará con cada valor de $array...
+    echo "{$clave} => {$valor} ";
+    print_r($data);
+}
 
 if (isset($data['_id'])){
     $id = $data['_id'];
@@ -188,7 +192,8 @@ if (isset($data['_id'])){
     } 
     if($data['method'] == "PUT") {
         if($data['stock'] == "ASIES") {
-            //
+            //$api->updateStock($data);
+            print "Estas con stock asies";
         } else {
             //$api->update($data);
         }
@@ -197,10 +202,6 @@ if (isset($data['_id'])){
         $api->delete($id);
     }
 }else{
-    if($data['stock'] == "ASIES") {
-        $api->updateStock($data);
-    } else {
-        $api->getAll();
-    }
+    $api->getAll();
 }
 ?>
