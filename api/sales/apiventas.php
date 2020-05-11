@@ -41,7 +41,8 @@ if (isset($data['idDate'])){
         $dataDetalles = json_decode($data['products'], true);
         //$api->addDetalles($dataDetalles);
         foreach ($data['products'] as $clave => $valor) {
-            echo "$clave => $valor";
+            echo $clave['_id'] ;
+            echo $valor['_id'];
             //
         }
     } 
