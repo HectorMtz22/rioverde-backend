@@ -37,10 +37,9 @@ if (isset($data['idDate'])){
     $id = $data['idDate'];
     if($data['method'] == "POST") {
         $api->addVenta($data['idDate'], $data['priceTotal']);
-        foreach ($data['products'] as $clave1 => $detalles) {
-            foreach($detalles as $clave2 => $detallesVenta) {
-                echo $detallesVenta['_id'];
-            }
+        foreach ($data['products'] as $clave => $detalles) {
+            echo $detalles['_id'] ;
+            echo "       Espacio     ";
             //$api->addDetalles($detalles, $id);
         }
     } 
