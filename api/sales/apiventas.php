@@ -42,8 +42,8 @@ if (isset($data['idDate'])){
         //$api->addDetalles($dataDetalles);
         foreach ($data['products'] as $clave => $valor) {
             //echo $clave['_id'] ;
-            echo $valor['_id'];
-            echo $valor['cant'];
+            //echo $valor['_id'];
+            //echo $valor['cant'];
             echo $valor['idDate'];
             //
         }
