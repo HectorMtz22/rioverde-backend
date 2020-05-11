@@ -39,11 +39,15 @@ if (isset($data['idDate'])){
         //$api->addVenta($data['idDate'], $data['priceTotal']);
 
         $dataDetalles = json_decode($data['products'], true);
-        echo $dataDetalles;
+        $api->addDetalles($dataDetalles);
+
+        echo $dataDetalles['idDate'];
+        echo $dataDetalles['_id'];
+        echo $dataDetalles['cant'];
         /*
         foreach ($data['products'] as $clave => $valor) {
             print "$clave => $valor";
-            //$api->addDetalles($clave, $valor);
+            //
         }
         */
     } 
