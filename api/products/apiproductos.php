@@ -191,7 +191,6 @@ if (isset($data['_id'])){
             foreach ($data['_id'] as $clave => $valor) {
                 // $array[3] se actualizará con cada valor de $array...
                 echo "{$clave} => {$valor} ";
-                print_r($data);
             }
             print "Estas con stock asies";
         } else {
