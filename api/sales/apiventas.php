@@ -16,11 +16,11 @@ class ApiVentas{
         //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
     }
-    function addDetalles($item)
+    function addDetalles($detalles, $id)
     {
         $venta = new venta();
 
-        $venta->nuevoDetalles($item);
+        $venta->nuevoDetalles($detalles, $id);
         //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
     }
@@ -36,15 +36,10 @@ $data = json_decode(file_get_contents('php://input'), true);
 if (isset($data['idDate'])){
     $id = $data['idDate'];
     if($data['method'] == "POST") {
-        //$api->addVenta($data['idDate'], $data['priceTotal']);
-
-        //$dataDetalles = json_decode($data['products'], true);
-        //$api->addDetalles($dataDetalles);
-        foreach ($data['products'] as $clave => $valor) {
-            //echo $clave['_id'] ;
-            echo $valor['_id'];
-            echo $valor['cant'];
-            //
+        $api->addVenta($data['idDate'], $data['priceTotal']);
+        foreach ($data['products'] as $clave => $detalles) {
+            echo $detalles['_id'] ;
+            //$api->addDetalles($detalles, $id);
         }
     } 
 }else{

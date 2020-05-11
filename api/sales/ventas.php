@@ -13,14 +13,13 @@ class Venta extends DB{
         ]);
         return $query;  
     }
-    function nuevoDetalles($detallesVenta)
+    function nuevoDetalles($detalles, $id)
     {
-        $query = $this->connect()->prepare('INSERT INTO venta (id_venta, total) VALUES (:idDate, :priceTotal)');
+        $query = $this->connect()->prepare('INSERT INTO detallesventa (codigoventa, codigoproducto, cantidad) VALUES (:codigoventa, :codigoproducto, :cantidad)');
         $query->execute([
-            ':idDate' => $detallesVenta, 
-            ':priceTotal' => $detallesVenta,
-            ':idDate' => $detallesVenta, 
-            ':priceTotal' => $detallesVenta
+            ':codigoventa' => $id, 
+            ':codigoproducto' => $detalles['_id'],
+            ':cantidad' => $detalles['cant']
         ]);
         return $query;  
     }
