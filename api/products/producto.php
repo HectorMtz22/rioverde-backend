@@ -39,12 +39,12 @@ class Producto extends DB{
         ]);
         return $query;  
     }
-    function actualizarStock($producto)
+    function actualizarStock($codigo, $stock)
     {
         $query = $this->connect()->prepare('UPDATE productos SET stock = :stock WHERE codigo = :codigo');
         $query->execute([
-            ':codigo' => $producto['_id'],
-            ':stock' => $producto['total']
+            ':codigo' => $codigo,
+            ':stock' => $stock
         ]);
         return $query;  
     }

@@ -92,11 +92,11 @@ class ApiProducto{
         //$this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
         return 0;
     }
-    function updateStock($item)
+    function updateStock($codigo, $stock)
     {
         $producto = new producto();
 
-        $producto->actualizarStock($item);
+        $producto->actualizarStock($codigo, $stock);
         //$this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
         return 0;
     }
@@ -187,14 +187,11 @@ if (isset($data['_id'])){
     } 
     if($data['method'] == "PUT") {
         if($data['stock'] == "ASIES") {
-            //$api->updateStock($data);
             foreach ($data['_id'] as $clave => $valor) {
-                // $array[3] se actualizará con cada valor de $array...
-                echo "{$clave} => {$valor} ";
+                $api->updateStock($clave, $valor);
             }
-            print "Estas con stock asies";
         } else {
-            //$api->update($data);
+            $api->update($data);
         }
     }
     if($data['method'] == "DELETE") {
