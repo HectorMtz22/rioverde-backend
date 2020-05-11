@@ -39,6 +39,15 @@ class Producto extends DB{
         ]);
         return $query;  
     }
+    function actualizarStock($producto)
+    {
+        $query = $this->connect()->prepare('UPDATE productos SET stock = :stock WHERE codigo = :codigo');
+        $query->execute([
+            ':codigo' => $producto['_id'],
+            ':stock' => $producto['total']
+        ]);
+        return $query;  
+    }
     function eliminarProducto($id) 
     {
         $query = $this->connect()->prepare('DELETE FROM productos WHERE codigo = :id');

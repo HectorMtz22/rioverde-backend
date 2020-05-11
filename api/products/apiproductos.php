@@ -92,6 +92,14 @@ class ApiProducto{
         //$this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
         return 0;
     }
+    function updateStock($item)
+    {
+        $producto = new producto();
+
+        $producto->actualizarStock($item);
+        //$this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
+        return 0;
+    }
     function delete($id)
     {
         $producto = new producto();
@@ -164,7 +172,7 @@ class ApiProducto{
 $api = new ApiProducto();
 
 $data = json_decode(file_get_contents('php://input'), true);
-
+echo $data;
 
 if (isset($data['_id'])){
     $id = $data['_id'];
@@ -179,7 +187,11 @@ if (isset($data['_id'])){
         $api->add($data);
     } 
     if($data['method'] == "PUT") {
-        $api->update($data);
+        if($data['stock'] == "ASIES") {
+            //$api->updateStock($data);
+        } else {
+            //$api->update($data);
+        }
     }
     if($data['method'] == "DELETE") {
         $api->delete($id);
