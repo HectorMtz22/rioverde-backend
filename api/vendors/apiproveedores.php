@@ -104,7 +104,7 @@ if (isset($data['_id'])){
         if(is_numeric($id)){
             $api->getById($id);
         }else{
-            $api->json_encode(array('mensaje' => '¡Los parámetros son incorrectos!'));
+            json_encode(array('mensaje' => '¡Los parámetros son incorrectos!'));
         }
     }
     if($data['method'] == "POST") {

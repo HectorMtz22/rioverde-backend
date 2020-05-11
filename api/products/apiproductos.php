@@ -27,6 +27,7 @@ class ApiProducto{
                     "_id" => $row['codigo'],
                     "name" => $row['nombre'],
                     "brand" => $row['marca'],
+                    "buy" => $row['compra'],
                     "price" => $row['precio'],
                     "total" => $row['stock']
                 );
@@ -59,6 +60,7 @@ class ApiProducto{
                     "_id" => $row['codigo'],
                     "name" => $row['nombre'],
                     "brand" => $row['marca'],
+                    "buy" => $row['compra'],
                     "price" => $row['precio'],
                     "total" => $row['stock']
                 );
@@ -78,7 +80,7 @@ class ApiProducto{
     {
         $producto = new producto();
 
-        $resultado = $producto->nuevoProducto($item);
+        $producto->nuevoProducto($item);
         //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
     }
@@ -86,7 +88,7 @@ class ApiProducto{
     {
         $producto = new producto();
 
-        $resultado = $producto->actualizarProducto($item);
+        $producto->actualizarProducto($item);
         //$this->json_encode(array('mensaje' => '¡Producto Actualizado!'));
         return 0;
     }
@@ -94,7 +96,7 @@ class ApiProducto{
     {
         $producto = new producto();
 
-        $resultado = $producto->eliminarProducto($id);
+        $producto->eliminarProducto($id);
         //$this->json_encode(array('mensaje' => '¡Producto Eliminado!'));
         return 0;
     }
@@ -170,7 +172,7 @@ if (isset($data['_id'])){
         if(is_numeric($id)){
             $api->getById($id);
         }else{
-            $api->json_encode(array('mensaje' => '¡Los parámetros son incorrectos!'));
+            json_encode(array('mensaje' => '¡Los parámetros son incorrectos!'));
         }
     }
     if($data['method'] == "POST") {
