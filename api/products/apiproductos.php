@@ -172,7 +172,7 @@ class ApiProducto{
 $api = new ApiProducto();
 
 $data = json_decode(file_get_contents('php://input'), true);
-foreach ($data as $clave => $valor) {
+foreach ($data['id'] as $clave => $valor) {
     // $array[3] se actualizará con cada valor de $array...
     echo "{$clave} => {$valor} ";
     print_r($data);
