@@ -38,11 +38,14 @@ if (isset($data['idDate'])){
     if($data['method'] == "POST") {
         //$api->addVenta($data['idDate'], $data['priceTotal']);
 
-        $dataDetalles = $data['products'];
-        foreach ($dataDetalles as $clave => $valor) {
+        $dataDetalles = json_decode($data['products'], true);
+        echo $dataDetalles;
+        /*
+        foreach ($data['products'] as $clave => $valor) {
             print "$clave => $valor";
             //$api->addDetalles($clave, $valor);
         }
+        */
     } 
 }else{
     //Aquí mandaremos llamar la función para calcular las ganancias
