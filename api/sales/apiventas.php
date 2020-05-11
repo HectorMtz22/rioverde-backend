@@ -38,13 +38,12 @@ if (isset($data['idDate'])){
     if($data['method'] == "POST") {
         //$api->addVenta($data['idDate'], $data['priceTotal']);
 
-        $dataDetalles = json_decode($data['products'], true);
+        //$dataDetalles = json_decode($data['products'], true);
         //$api->addDetalles($dataDetalles);
         foreach ($data['products'] as $clave => $valor) {
             //echo $clave['_id'] ;
-            //echo $valor['_id'];
-            //echo $valor['cant'];
-            echo $valor['idDate'];
+            echo $valor['_id'];
+            echo $valor['cant'];
             //
         }
     } 
