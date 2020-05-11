@@ -188,7 +188,7 @@ if (isset($data['_id'])){
     } 
     if($data['method'] == "PUT") {
         if($data['stock'] == "ASIES") {
-            //$api->updateStock($data);
+            //
         } else {
             //$api->update($data);
         }
@@ -197,6 +197,10 @@ if (isset($data['_id'])){
         $api->delete($id);
     }
 }else{
-    $api->getAll();
+    if($data['stock'] == "ASIES") {
+        $api->updateStock($data);
+    } else {
+        $api->getAll();
+    }
 }
 ?>
