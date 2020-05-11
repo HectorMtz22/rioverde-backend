@@ -4,7 +4,7 @@ include_once '../db.php';
 
 class Producto extends DB{
     function obtenerProductos(){
-        $query = $this->connect()->query('SELECT * FROM productos');
+        $query = $this->connect()->query('SELECT * FROM productos ORDER BY nombre ASC');
         return $query;
     }
     function obtenerProducto($id)
