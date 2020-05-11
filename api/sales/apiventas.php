@@ -39,13 +39,10 @@ if (isset($data['idDate'])){
         //$api->addVenta($data['idDate'], $data['priceTotal']);
 
         $dataDetalles = $data['products'];
-        echo $dataDetalles;
-        /*
-        foreach ($data['products'] as $clave => $valor) {
+        foreach ($dataDetalles as $clave => $valor) {
             print "$clave => $valor";
             //$api->addDetalles($clave, $valor);
         }
-        */
     } 
 }else{
     //Aquí mandaremos llamar la función para calcular las ganancias
