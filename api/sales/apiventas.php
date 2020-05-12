@@ -26,12 +26,32 @@ class ApiVentas{
     }
     function profits() 
     {
+        $total["items"] = array();
         $venta = new venta();
 
-        $resultado = $venta->ganancias();
+        $fecha = new DateTime();
+        $fecha->getTimestamp();
+        $datenow = $fecha - 86400;
 
-        echo json_encode($resultado);
+        $resultado = $venta->ganancias($datenow);
 
+        if($resultado->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
+        {
+            //$row = $resultado->fetch();
+
+            while ($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+                $item=array
+                (
+                    "profits" => $row['codigoventa']
+                );
+                array_push($total["items"], $item);
+            }
+            echo json_encode($total);
+        }
+        else
+        {
+            echo json_encode(array('mensaje' => 'No hay elementos'));
+        }
         return 0;
     }
 }

@@ -23,11 +23,8 @@ class Venta extends DB{
         ]);
         return $query;  
     }
-    function ganancias()
+    function ganancias($datenow)
     {
-        $fecha = new DateTime();
-        $fecha->getTimestamp();
-        $datenow = $fecha - 86400;
         //$query = $this->connect()->query('SELECT * FROM productos ORDER BY nombre ASC');
         $query1 = $this->connect()->prepare('SELECT * FROM detallesventa WHERE codigoventa > :datenow');
         $query1->execute([
