@@ -24,6 +24,14 @@ class ApiVentas{
         //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
     }
+    function profits() 
+    {
+        $venta = new venta();
+
+        $venta->ganancias();
+
+        return 0;
+    }
 }
 
 // Aqui mandamos a llamar toda la API 
@@ -43,5 +51,6 @@ if (isset($data['idDate'])){
     } 
 }else{
     //Aquí mandaremos llamar la función para calcular las ganancias
+    $api->profits();
 }
 ?>
