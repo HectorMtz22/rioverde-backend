@@ -4,7 +4,7 @@
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     
 require 'ventas.php';
-require '../products/apiproductos.php';
+require '../products/classes.php';
 
 class ApiVentas{
     
