@@ -4,7 +4,7 @@
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     
 include_once 'ventas.php';
-include_once '../products/apiproductos.php';
+require '../products/apiproductos.php';
 
 class ApiVentas{
     
