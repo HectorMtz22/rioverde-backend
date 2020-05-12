@@ -3,7 +3,7 @@
     header("Access-Control-Allow-Headers: *");
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     
-include_once 'ventas.php';
+require 'ventas.php';
 require '../products/apiproductos.php';
 
 class ApiVentas{
