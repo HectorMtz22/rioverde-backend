@@ -80,7 +80,7 @@ class ApiVentas{
                 //}
                 array_push($total["items"], $item);
             }
-            echo $productos["id"];
+            echo $productos["items"];
             //echo json_encode($total);
         }
         else
