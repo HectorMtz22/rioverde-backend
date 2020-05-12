@@ -4,6 +4,7 @@
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     
 include_once 'ventas.php';
+include_once '../products/apiproductos.php';
 
 class ApiVentas{
     
@@ -26,27 +27,60 @@ class ApiVentas{
     }
     function profits() 
     {
+        // Llama a los productos y los guarda
+        $llamadaProductos = new ApiProducto();
+        $productos = $llamadaProductos->getAll();
+        // Inicializa la "Venta" para calcular las ganancias
         $total["items"] = array();
         $venta = new venta();
-
+        // Calcula la fecha de hoy menos 24H
         $fecha = new DateTime();
         $fecha->getTimestamp();
         $datenow = $fecha - 86400;
+        // Obtiene las ventas CREO QUE NO SE NECESITA
+        //$gVenta = $venta->gananciasVenta($datenow);
 
-        $resultado = $venta->ganancias($datenow);
-
-        if($resultado->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
+        // Obtiene los productos comprados
+        $gDetalles = $venta->gananciasDetalles($datenow);
+        /* NO NECESARIO POR AHORA
+        if($gVenta->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
         {
-            //$row = $resultado->fetch();
+            //$row = $gVenta->fetch();
 
-            while ($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+            while ($row = $gVenta->fetch(PDO::FETCH_ASSOC)){
                 $item=array
                 (
-                    "profits" => $row['codigoventa']
+                    "_id" => $row['id_venta'],
+                    "total" => $row['total']
                 );
                 array_push($total["items"], $item);
             }
             echo json_encode($total);
+        }
+        else
+        {
+            echo json_encode(array('mensaje' => 'No hay elementos'));
+        }
+        */
+        if($gDetalles->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
+        {
+            //$row = $gDetalles->fetch();
+
+            while ($row = $gDetalles->fetch(PDO::FETCH_ASSOC)){
+                $item=array
+                (
+                    "id_sale" => $row['codigoventa'],
+                    "id_product" => $row['codigoproducto'],
+                    "cant" => $row['cantidad']
+
+                );
+                foreach ($productos as $clave2 => $detalles2) {
+                    echo "$clave2 => $detalles2";
+                }
+                array_push($total["items"], $item);
+            }
+            
+            //echo json_encode($total);
         }
         else
         {

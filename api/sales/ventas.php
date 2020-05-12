@@ -23,14 +23,25 @@ class Venta extends DB{
         ]);
         return $query;  
     }
-    function ganancias($datenow)
+    function gananciasVenta($datenow)
     {
         //$query = $this->connect()->query('SELECT * FROM productos ORDER BY nombre ASC');
-        $query1 = $this->connect()->prepare('SELECT * FROM detallesventa WHERE codigoventa > :datenow');
-        $query1->execute([
+        $query = $this->connect()->prepare('SELECT * FROM venta WHERE id_venta
+        > :datenow');
+        $query->execute([
             ':datenow' => $datenow
         ]);
-        return $query1;
+        return $query;
+        
+    }
+    function gananciasDetalles($datenow)
+    {
+        //$query = $this->connect()->query('SELECT * FROM productos ORDER BY nombre ASC');
+        $query = $this->connect()->prepare('SELECT * FROM detallesventa WHERE codigoventa > :datenow');
+        $query->execute([
+            ':datenow' => $datenow
+        ]);
+        return $query;
         
     }
 
