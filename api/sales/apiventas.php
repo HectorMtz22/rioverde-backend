@@ -75,12 +75,12 @@ class ApiVentas{
                     "cant" => $row['cantidad']
 
                 );
-                foreach ($productos as $clave2 => $detalles2) {
-                    echo $detalles2["_id"];
-                }
+                //foreach ($productos as $clave2 => $detalles2) {
+                //    echo $detalles2["_id"];
+                //}
                 array_push($total["items"], $item);
             }
-            
+            echo $productos["id"];
             //echo json_encode($total);
         }
         else
