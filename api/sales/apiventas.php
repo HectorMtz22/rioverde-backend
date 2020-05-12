@@ -28,7 +28,9 @@ class ApiVentas{
     {
         $venta = new venta();
 
-        $venta->ganancias();
+        $resultado = $venta->ganancias();
+
+        echo json_encode($resultado);
 
         return 0;
     }
