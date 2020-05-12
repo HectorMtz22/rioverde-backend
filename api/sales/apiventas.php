@@ -27,6 +27,8 @@ class ApiVentas{
     }
     function profits() 
     {
+        // Variable total
+        $ganancias = 0;
         // Llama a los productos y los guarda
         $llamadaProductos = new ApiProducto();
         $productos = $llamadaProductos->getAll();
@@ -38,31 +40,10 @@ class ApiVentas{
         $fecha = new DateTime();
         $fecha->getTimestamp();
         $datenow = $fecha - 86400;
-        // Obtiene las ventas CREO QUE NO SE NECESITA
-        //$gVenta = $venta->gananciasVenta($datenow);
 
         // Obtiene los productos comprados
         $gDetalles = $venta->gananciasDetalles($datenow);
-        /* NO NECESARIO POR AHORA
-        if($gVenta->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
-        {
-            //$row = $gVenta->fetch();
 
-            while ($row = $gVenta->fetch(PDO::FETCH_ASSOC)){
-                $item=array
-                (
-                    "_id" => $row['id_venta'],
-                    "total" => $row['total']
-                );
-                array_push($total["items"], $item);
-            }
-            echo json_encode($total);
-        }
-        else
-        {
-            echo json_encode(array('mensaje' => 'No hay elementos'));
-        }
-        */
         if($gDetalles->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
         {
             //$row = $gDetalles->fetch();
@@ -77,12 +58,15 @@ class ApiVentas{
                 );
                 foreach ($productos["items"] as $clave => $detalles) {
                     if ($row['codigoproducto'] == $detalles["_id"]) {
-                        echo "Coincide el ". $detalles["_id"];
+                        $cantidadVendida = $row['cantidad'] * $detalles['price'];
+                        $cantidadComprada = $row['cantidad'] * $detalles['buy'];
+                        $operacion = $cantidadVendida - $cantidadComprada;
+                        $ganancias = $ganancias + $operacion;
                     }
                 }
                 array_push($total["items"], $item);
             }
-            
+            echo $ganancias;
             //echo json_encode($total);
         }
         else
