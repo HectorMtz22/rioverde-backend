@@ -33,13 +33,13 @@ class ApiProducto{
                 );
                 array_push($total["items"], $item);
             }
-            echo json_encode($total);
+            
         }
         else
         {
             echo json_encode(array('mensaje' => 'No hay elementos'));
         }
-        return 0;
+        return $total;
     }
 
     function getById($id)
@@ -198,6 +198,7 @@ if (isset($data['_id'])){
         $api->delete($id);
     }
 }else{
-    $api->getAll();
+    $todosProductos = $api->getAll();
+    echo json_encode($todosProductos);
 }
 ?>

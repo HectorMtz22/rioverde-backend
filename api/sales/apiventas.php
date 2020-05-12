@@ -29,8 +29,8 @@ class ApiVentas{
     {
         // Llama a los productos y los guarda
         $llamadaProductos = new ApiProducto();
-        $llamadaProductos2 = $llamadaProductos->getAll();
-        $productos = json_decode($llamadaProductos2, true);
+        $productos = $llamadaProductos->getAll();
+        //$productos = json_decode($llamadaProductos2, true);
         // Inicializa la "Venta" para calcular las ganancias
         $total["items"] = array();
         $venta = new venta();
