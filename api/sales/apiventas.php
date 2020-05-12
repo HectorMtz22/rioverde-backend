@@ -67,8 +67,8 @@ class ApiVentas{
                 }
             }
             array_push($profits["profits"], $ganancias);
-            //echo $ganancias;
-            echo json_encode($profits);
+            echo $profits["profits"];
+            //echo json_encode($profits);
         }
         else
         {
