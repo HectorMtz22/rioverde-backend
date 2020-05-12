@@ -27,8 +27,9 @@ class ApiVentas{
     }
     function profits() 
     {
-        // Variable total
+        // Variable de ganancias, 1 Operaciones 2 Array que se pasará al frontend
         $ganancias = 0;
+        $profits = array();
         // Llama a los productos y los guarda
         $llamadaProductos = new ApiProducto();
         $productos = $llamadaProductos->getAll();
@@ -64,10 +65,10 @@ class ApiVentas{
                         $ganancias = $ganancias + $operacion;
                     }
                 }
-                array_push($total["items"], $item);
             }
-            echo $ganancias;
-            //echo json_encode($total);
+            array_push($profits["profits"], $ganancias);
+            //echo $ganancias;
+            echo json_encode($profits);
         }
         else
         {
