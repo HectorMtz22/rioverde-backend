@@ -29,7 +29,8 @@ class ApiVentas{
     {
         // Llama a los productos y los guarda
         $llamadaProductos = new ApiProducto();
-        $productos = $llamadaProductos->getAll();
+        $llamadaProductos2 = $llamadaProductos->getAll();
+        $productos = json_decode($llamadaProductos2, true);
         // Inicializa la "Venta" para calcular las ganancias
         $total["items"] = array();
         $venta = new venta();
@@ -75,7 +76,7 @@ class ApiVentas{
 
                 );
                 foreach ($productos as $clave2 => $detalles2) {
-                    echo "$clave2 => $detalles2";
+                    echo $detalles2["_id"];
                 }
                 array_push($total["items"], $item);
             }
