@@ -46,7 +46,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 
 if (isset($data['dateStart'])){
-    $salidas = $api->output($date['dateStart'], $date['dateEnd']);
+    $salidas = $api->output($data['dateStart'], $data['dateEnd']);
     echo json_encode($salidas);
 }
 ?>
