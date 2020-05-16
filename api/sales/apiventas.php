@@ -38,8 +38,9 @@ class ApiVentas{
         $venta = new venta();
         // Calcula la fecha de hoy menos 24H
         $fecha = new DateTime();
-        $fecha->getTimestamp();
-        $datenow = $fecha - 86400;
+        $timestamp = $fecha->getTimestamp();
+        echo $timestamp;
+        $datenow = $timestamp - 86400;
 
         // Obtiene los productos comprados
         $gDetalles = $venta->gananciasDetalles($datenow);
