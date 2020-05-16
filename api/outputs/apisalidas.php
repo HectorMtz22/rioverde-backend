@@ -4,7 +4,6 @@
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     
 require 'salida.php';
-require '../products/classes.php';
 
 class ApiSalidas{
     
@@ -47,15 +46,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 
 if (isset($data['idDate'])){
-    $id = $data['idDate'];
-    if($data['do'] == "products") {
-        $llamadaProductos = new ApiProducto();
-        $productos = $llamadaProductos->getAll();
-        echo json_encode($todosProductos);
-    } 
-    if($data['do'] == "details") {
-        $salidas = $api->output($date['dateStart'], $date['dateEnd']);
-        echo json_encode($salidas);
-    } 
+    $salidas = $api->output($date['dateStart'], $date['dateEnd']);
+    echo json_encode($salidas);
 }
 ?>
