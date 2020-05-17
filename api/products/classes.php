@@ -108,6 +108,14 @@ class ApiProducto{
         //$this->json_encode(array('mensaje' => '¡Producto Eliminado!'));
         return 0;
     }
+    function deleteMarca($marca)
+    {
+        $producto = new producto();
+
+        $producto->eliminarProductoMarca($marca);
+        //$this->json_encode(array('mensaje' => '¡Producto Eliminado!'));
+        return 0;
+    }
 
     
     /* Las funciones de aqui adentro son para subir las imagenes en un futuro   

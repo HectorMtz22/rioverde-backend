@@ -36,6 +36,10 @@ if (isset($data['_id'])){
         $api->delete($id);
     }
 }else{
+    if(isset($data['deleteMarca'])) {
+        $marca = $data['deleteMarca'];
+        $api->deleteMarca($marca);
+    }
     $todosProductos = $api->getAll();
     echo json_encode($todosProductos);
 }

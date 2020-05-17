@@ -54,6 +54,12 @@ class Producto extends DB{
         $query->execute([':id' => $id]);
         return $query;
     }
+    function eliminarProductoMarca($marca) 
+    {
+        $query = $this->connect()->prepare('DELETE FROM productos WHERE marca = :marca');
+        $query->execute([':marca' => $marca]);
+        return $query;
+    }
 
 }
 ?>
