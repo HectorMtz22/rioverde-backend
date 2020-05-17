@@ -22,6 +22,16 @@ class ApiVentas{
         $venta = new venta();
 
         $venta->nuevoDetalles($detalles, $id);
+
+        $llamadaProductos = new ApiProducto();
+        // Llama a todos los productos
+        $productos = $llamadaProductos->getAll();
+        // Los vuelve a guardar para que sea de facil acceso
+        $producto = $productos["items"];
+        $nuevoStock = $producto["total"] - $detalles['cant'];
+
+        $llamadaProductos->updateStock($producto["_id"], $nuevoStock);
+
         //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
     }
