@@ -20,17 +20,16 @@ class ApiVentas{
     function addDetalles($detalles, $id)
     {
         $venta = new venta();
-
         $venta->nuevoDetalles($detalles, $id);
 
-        $llamadaProductos = new ApiProducto();
-        // Llama a todos los productos
+        $llamadaProductos = new ApiProducto(); // Llama a todos los productos
         $productos = $llamadaProductos->getById($detalles['_id']);
-        // Los vuelve a guardar para que sea de facil acceso
-        $producto = $productos["items"];
-        $nuevoStock = $producto["total"] - $detalles['cant'];
-
-        $llamadaProductos->updateStock($producto["_id"], $nuevoStock);
+        foreach ($productos["items"] as $clave => $producto) {
+            if ($detalles["_id"] == $producto["_id"]) {
+                $nuevoStock = $producto['total'] - $detalles['cant'];
+                $llamadaProductos->updateStock($producto["_id"], $nuevoStock);
+            }
+        }
 
         //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
