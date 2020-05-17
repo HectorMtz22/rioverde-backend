@@ -25,7 +25,7 @@ class ApiVentas{
 
         $llamadaProductos = new ApiProducto();
         // Llama a todos los productos
-        $productos = $llamadaProductos->getAll();
+        $productos = $llamadaProductos->getById($detalles['_id']);
         // Los vuelve a guardar para que sea de facil acceso
         $producto = $productos["items"];
         $nuevoStock = $producto["total"] - $detalles['cant'];
