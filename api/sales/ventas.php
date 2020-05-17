@@ -23,23 +23,25 @@ class Venta extends DB{
         ]);
         return $query;  
     }
-    function gananciasVenta($datenow)
+    function gananciasVenta($dateStart, $dateEnd)
     {
         //$query = $this->connect()->query('SELECT * FROM productos ORDER BY nombre ASC');
-        $query = $this->connect()->prepare('SELECT * FROM venta WHERE id_venta
-        > :datenow');
+        $query = $this->connect()->prepare('SELECT * FROM venta WHERE (id_venta
+        >= :dateStart AND id_venta <= :dateEnd)');
         $query->execute([
-            ':datenow' => $datenow
+            ':dateStart' => $dateStart,
+            ':dateEnd' => $dateEnd
         ]);
         return $query;
         
     }
-    function gananciasDetalles($datenow)
+    function gananciasDetalles($dateStart, $dateEnd)
     {
         //$query = $this->connect()->query('SELECT * FROM productos ORDER BY nombre ASC');
-        $query = $this->connect()->prepare('SELECT * FROM detallesventa WHERE codigoventa > :datenow');
+        $query = $this->connect()->prepare('SELECT * FROM detallesventa WHERE (codigoventa >= :dateStart AND codigoventa <= :dateEnd)');
         $query->execute([
-            ':datenow' => $datenow
+            ':dateStart' => $dateStart,
+            ':dateEnd' => $dateEnd
         ]);
         return $query;
         

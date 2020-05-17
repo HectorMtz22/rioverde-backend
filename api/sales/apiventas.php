@@ -34,25 +34,19 @@ class ApiVentas{
         //$this->json_encode(array('mensaje' => '¡Nuevo Producto Registrado!'));
         return 0;
     }
-    function profits() 
+    function profits($dateStart, $dateEnd) 
     {
         // Variable de ganancias, 1 Operaciones 
         $ganancias = 0;
         // Llama a los productos y los guarda
         $llamadaProductos = new ApiProducto();
         $productos = $llamadaProductos->getAll();
-        //$productos = json_decode($llamadaProductos2, true);
         // Inicializa la "Venta" para calcular las ganancias
         $total["items"] = array();
         $venta = new venta();
-        // Calcula la fecha de hoy menos 24H
-        $fecha = new DateTime();
-        $timestamp = $fecha->getTimestamp();
-        //echo $timestamp;
-        $datenow = $timestamp - 86400;
 
         // Obtiene los productos comprados
-        $gDetalles = $venta->gananciasDetalles($datenow);
+        $gDetalles = $venta->gananciasDetalles($dateStart, $dateEnd);
 
         if($gDetalles->rowCount() !== 0) //la variable "$row" es = a fila, rowcount es contar las filas
         {
@@ -105,6 +99,8 @@ if (isset($data['idDate'])){
     } 
 }else{
     //Aquí mandaremos llamar la función para calcular las ganancias
-    $api->profits();
+    if(isset($data['dateStart'])) {
+        $api->profits($data['dateStart'], $data['dateEnd']);
+    }
 }
 ?>
