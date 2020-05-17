@@ -23,7 +23,7 @@ class ApiVentas{
         $venta->nuevoDetalles($detalles, $id);
 
         $llamadaProductos = new ApiProducto(); // Llama a todos los productos
-        $productos = $llamadaProductos->getById($detalles['_id']);
+        $productos = $llamadaProductos->getAll();
         foreach ($productos["items"] as $clave => $producto) {
             if ($detalles["_id"] == $producto["_id"]) {
                 $nuevoStock = $producto['total'] - $detalles['cant'];
