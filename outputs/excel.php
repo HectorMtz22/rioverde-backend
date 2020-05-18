@@ -1,5 +1,5 @@
 <?php
-	$file = "test.xls";
+	$file = "test.csv";
 	header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 	header('Content-Disposition: attachment; filename='.$file);
 	// $f = fopen('php://output', 'w')
